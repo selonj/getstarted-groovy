@@ -1,0 +1,27 @@
+group 'com.holi'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+def jdkVersion = 1.5
+sourceCompatibility = jdkVersion
+targetCompatibility = jdkVersion
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'org.codehaus.groovy:groovy-all:2.4.7'
+
+  testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'idea'
+
+idea {
+  module {
+    excludeDirs += [file('.idea'), file('.gradle'), file('gradle')]
+  }
+}
