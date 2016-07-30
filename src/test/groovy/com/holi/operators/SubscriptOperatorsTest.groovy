@@ -35,7 +35,7 @@ class SubscriptOperatorsTest {
   @Test void 'putAt also supports ranges'() {
     def numbers = [1, 2, 3];
 
-    numbers[0..1] = -1;
+    numbers[0..1] = [-1, -1];
 
     assert numbers == [-1, -1, 3];
   }
