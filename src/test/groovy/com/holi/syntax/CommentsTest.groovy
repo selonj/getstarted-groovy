@@ -1,6 +1,7 @@
 #!/user/bin/env groovy
 package com.holi.syntax
 
+import com.holi.utils.Uris
 import org.junit.Test
 
 /**
@@ -38,11 +39,7 @@ class CommentsTest {
 
   @Test void 'shell comment line "#" must be the first character of the groovy source file'() {
     GroovyShell shell = new GroovyShell();
-    def result = shell.evaluate(classpath('shell_comment_line.groovy'));
+    def result = shell.evaluate(Uris.classpath('shell_comment_line.groovy'));
     assert result == 'success';
-  }
-
-  static URI classpath(String uri) {
-    return ClassLoader.systemClassLoader.getResource(uri).toURI();
   }
 }
