@@ -2,6 +2,8 @@ package com.holi.syntax
 
 import org.junit.Test
 
+import java.util.concurrent.atomic.AtomicBoolean
+
 import static groovy.test.GroovyAssert.shouldFail
 
 /**
@@ -53,6 +55,17 @@ class StringsTest {
       "$number.toString()";
     };
     assert "${number.toString()}" == number.toString();
+  }
+
+  @Test void 'holds reference in gstring'() {
+    def ran = new AtomicBoolean(false);
+    def result = "${ran}";
+
+    assert result == 'false';
+
+    ran.set(true);
+
+    assert result == 'true';
   }
 
   @Test void 'interpolating closure expressions'() {
@@ -150,5 +163,4 @@ class StringsTest {
   @Test void "dollar slashy string escape char is \$"() {
     assert ($/$${0}/$) == '${0}';
   }
-
 }
